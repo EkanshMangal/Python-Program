@@ -29,21 +29,30 @@
 # If element y is encountered, we find the absolute difference between current index of y and index of last occurrence of x and update the result if required.
 
 
+import math
+def findMinDifference(arr,n,x,y):
+    x_index=n
+    y_index=n
+    min_diff=math.inf
+    for i in range(n):
+        if arr[i]==x:
+            x_index=i
+            if y_index!=n:
+                min_diff=min(min_diff,abs(x_index-y_index))
+        if arr[i]==y:
+            y_index=i
+            if x_index!=n:
+                min_diff=min(min_diff,abs(x_index-y_index))
 
-def rearrange(A,n):
-    freq={}
-    for i in range(n):
-        freq[A[i]]=0
-    for i in range(n):
-        freq[A[i]]=freq[A[i]]+1
+    return min_diff
 
-    for i in range(n):
-        if A[i] in freq:
-            n=freq[A[i]]
-            while(n):
-                print(A[i],end=" ")
-                n=n-1
-            del freq[A[i]]
-A=[5,4,5,5,3,1,2,2,4]
-n=len(A)
-rearrange(A,n)
+if __name__=="__main__":
+    arr=[1,3,5,4,8,2,4,3,6,5]
+    x=2
+    y=5
+    n=len(arr)
+    diff=findMinDifference(arr,n,x,y)
+    if diff!=math.inf:
+        print(f"Minimum difference is {diff}")
+    else:
+        print("Invalid Input")
