@@ -28,7 +28,6 @@
 #
 # If element y is encountered, we find the absolute difference between current index of y and index of last occurrence of x and update the result if required.
 
-
 import math
 def findMinDifference(arr,n,x,y):
     x_index=n
